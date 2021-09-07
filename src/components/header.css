@@ -1,0 +1,14 @@
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    line-height: 200px;
+}
+
+#logo{
+   height: 200px;
+}
+
+#signin{
+    margin-right: 20px;
+}
