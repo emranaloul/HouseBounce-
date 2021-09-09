@@ -8,5 +8,5 @@
 
 ### Running the app
 
-* cd storefront
+* cd house-bounce
 * npm start
