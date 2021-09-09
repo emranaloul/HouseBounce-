@@ -8,9 +8,14 @@ const Requests = (props) => {
     setRequests([...requests, request]);
   };
 
+  const update = requests =>{
+    setRequests(requests);
+  }
+
   let state = {
     requests: requests,
-    addRequest: addRequest
+    addRequest: addRequest,
+    update:update
   };
 
   return (

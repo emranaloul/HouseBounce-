@@ -22,3 +22,12 @@ td, th {
   #table1{
     padding-left: 27%;
   }
+
+  #update{
+    background-color:rgb(73, 151, 73);
+    color: white;
+    border: none;
+    margin-left: 5px;
+    padding: 7px;
+    border: radius 10px;
+  }

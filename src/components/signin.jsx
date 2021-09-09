@@ -9,7 +9,6 @@ const Signin = (props) => {
   const context = useContext(AuthContext)
   const handleSignin = e =>{
     e.preventDefault()
-    console.log("🚀 ~ file: signin.jsx ~ line 9 ~ Signin ~ e", e.target.formBasicEmail.value,e.target.formBasicPassword.value)
     context.signin(e.target.formBasicEmail.value, e.target.formBasicPassword.value)
     
   }
@@ -21,6 +20,8 @@ const Signin = (props) => {
       </Then>
       <Else>
       <Form id="signinform" onSubmit={handleSignin}>
+        <fieldset>
+          <legend>Signin</legend>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="username" placeholder="Enter Username" />
@@ -36,6 +37,7 @@ const Signin = (props) => {
         <Button variant="primary" type="submit">
           Signin
         </Button>
+          </fieldset>
       </Form>
       </Else>
     </If>

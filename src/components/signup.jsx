@@ -6,6 +6,7 @@ import { If, Then, Else } from "react-if";
 import "./signup.css";
 import { AuthContext } from "../context/auth";
 import { Redirect } from "react-router";
+import Popup from "./popup"
 
 const Signup = (props) => {
   const context = useContext(AuthContext);
@@ -15,9 +16,6 @@ const Signup = (props) => {
 
   let handleSignup = (e) => {
     e.preventDefault();
-    console.log(e.target.formBasicEmail.value);
-    console.log(e.target.formBasicPassword.value);
-    console.log(e.target.group1.value);
     context.signup(
       e.target.formBasicEmail.value,
       e.target.formBasicPassword.value,
@@ -29,6 +27,9 @@ const Signup = (props) => {
       <If condition={!context.register}>
         <Then>
           <Form id="signupform" onSubmit={handleSignup}>
+            <fieldset>
+              <legend>Signup</legend>
+            
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Username</Form.Label>
               <Form.Control type="username" placeholder="Enter Username" />
@@ -62,7 +63,11 @@ const Signup = (props) => {
             <Button variant="success" type="submit">
               Signup
             </Button>
+            </fieldset>
           </Form>
+          <Popup show={context.existUser} title="Username already in use" message="Please use a different username"/>
+
+
         </Then>
         <Else>
           <Redirect to="/signin" />
@@ -72,7 +77,5 @@ const Signup = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-});
+
 export default Signup;

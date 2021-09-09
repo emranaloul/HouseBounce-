@@ -4,14 +4,14 @@ import { RequestContext } from "../context/requests";
 import "./home.css";
 import { If, Then, Else } from "react-if";
 import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
+import Popup from "./popup";
 
 const Home = (props) => {
+  const [submit, setSubmit] = useState(false);
   const context = useContext(AuthContext);
   const context2 = useContext(RequestContext);
-  console.log("🚀 ~ file: home.jsx ~ line 9 ~ Home ~ context", context)
   const handleSubmit = e =>{
     e.preventDefault();
-    console.log("🚀 ~ file: home.jsx ~ line 27 ~ Home ~ context.requests", context.requests)
       
       let request  = {
         id: context2.requests.length + 1,
@@ -27,6 +27,7 @@ const Home = (props) => {
       }
       context2.addRequest(request);
       document.getElementById('homeform2').reset()
+      setSubmit(true)
     }
   return (
     <>
@@ -71,7 +72,7 @@ const Home = (props) => {
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
-                    <option>3</option>
+                    <option>4</option>
                     <option>5</option>
                   </Form.Select>
                 </Form.Group>
@@ -97,6 +98,7 @@ const Home = (props) => {
               </fieldset>
             </Form>
           </div>
+          <Popup show={submit} title='Request Sent' message='admin will approve/reject your request'/>
         </Then>
         <Else>
           <div id="home">

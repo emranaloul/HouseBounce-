@@ -15,6 +15,7 @@ const AuthProvider = props =>{
     const [usernames, setUsernames] = useState([]);
     const [ user, setUser ] = useState({});
     const [register, setRegister] = useState(false)
+    const [existUser, setExistUser ] = useState(false)
      
     const signup = (username,password, role) => {
         if(!usernames.includes(username)){
@@ -24,6 +25,7 @@ const AuthProvider = props =>{
             setRegister(true)
         } else{
             console.log('username already in use')
+            setExistUser(true)
         }
     }
     const signin = (username, password) => {
@@ -75,7 +77,8 @@ const AuthProvider = props =>{
         signin:signin,
         user: user,
         logout: logout,
-        register: register
+        register: register,
+        existUser:existUser
     }
 
     return(
